@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 264 6% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 264 6% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 264 6% 13%;
+    --primary: 49 68% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 196 4% 54%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 264 3% 97%;
+    --muted-foreground: 264 2% 55%;
+    --accent: 0 0% 95%;
+    --accent-foreground: 264 6% 13%;
+    --destructive: 25 78% 64%;
+    --destructive-foreground: 0 0% 99%;
+    --border: 264 1% 93%;
+    --input: 264 1% 93%;
+    --ring: 49 68% 67%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 308 4% 18%;
+    --foreground: 0 0% 81%;
+    --card: 0 0% 18%;
+    --card-foreground: 0 0% 81%;
+    --popover: 308 4% 18%;
+    --popover-foreground: 0 0% 81%;
+    --primary: 50 67% 72%;
+    --primary-foreground: 308 4% 18%;
+    --secondary: 196 4% 59%;
+    --secondary-foreground: 308 4% 18%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 63%;
+    --accent: 0 0% 32%;
+    --accent-foreground: 0 0% 81%;
+    --destructive: 196 4% 59%;
+    --destructive-foreground: 308 4% 18%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 50 67% 72%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+    font-feature-settings: "liga" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Code elements specifically use JetBrains Mono */
+  code, pre, .font-mono {
+    font-family: "JetBrains Mono", "Geist Mono", ui-monospace, monospace;
+  }
+}
