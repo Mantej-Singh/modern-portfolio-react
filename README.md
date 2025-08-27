@@ -6,7 +6,7 @@ A modern, performant portfolio website built with React 19.1, TypeScript, and cu
 
 ### **From Static HTML5UP to Dynamic React** 
 
-This portfolio represents a complete evolution from legacy web development to modern React architecture. Here's the journey and why each change was necessary:
+This portfolio represents a complete evolution from legacy web development (see [website](https://mantej-singh.github.io/)/[Repo](https://github.com/Mantej-Singh/mantej-singh.github.io)) to modern React architecture. Here's the journey and why each change was necessary:
 
 #### **🔙 The HTML5UP Era (Static Template)**
 The original portfolio was built on HTML5UP's "Landed" template - a beautiful but static solution with several limitations:
@@ -293,14 +293,10 @@ npm run build
 
 This portfolio is designed for continuous evolution. Planned improvements include:
 
-- **Blog Section** with technical articles and tutorials
 - **Advanced Analytics** with visitor insights and heat mapping  
 - **Theme Customizer** with multiple color schemes
 - **Multi-language Support** for international reach
-
-> [!NOTE]
-> **Complete roadmap**: [View detailed future plans and development phases →](docs/future.md)
-
+- **Blog Section** with technical articles and tutorials (Maybe lol)
 ---
 
 ## 📚 **Resources & Credits**
