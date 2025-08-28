@@ -187,7 +187,7 @@ export function ContactForm() {
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      Twitter
+                      X
                     </a>
                   </div>
                 </div>

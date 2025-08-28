@@ -11,10 +11,10 @@ export const personalInfo: PersonalInfo = {
 
 🎯 What I do: AI red teaming • Prompt engineering • Data pipelines • Automation scripts
 🏆 Proud of: PromptFoo contributions • Windows11 toolkit • 10+ data viz projects
-💻 Daily drivers: Python, AWS Bedrock, Spark, SQL (and occasionally PowerShell wizardry)
-Stack: Python • AWS Bedrock • Spark • SQL • Prompt Engineering
+💻 Daily drivers: Python • AWS Bedrock • Pandas • Prompt Engineering (and occasionally PowerShell wizardry)
 
-📊 From ETL pipelines to LLM security - explore 48 repos of my data/AI journey below!`,
+
+📈 From ETL pipelines to LLM security - explore 48 repos of my data/AI journey below!`,
   location: "New Jersey, USA",
   email: "mdmantejsingh@gmail.com",
   image: "/images/pic01-min.jpg"
@@ -34,10 +34,10 @@ export const socialLinks: SocialLink[] = [
     label: "LinkedIn Profile"
   },
   {
-    platform: "Twitter",
+    platform: "X",
     url: "https://twitter.com/mdmantejsingh", 
     icon: "fa-twitter",
-    label: "Twitter Profile"
+    label: "X Profile"
   },
   {
     platform: "Email",

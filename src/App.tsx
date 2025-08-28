@@ -32,8 +32,8 @@ function App() {
               sequential={true} //DONT TOUCH THIS
               revealDirection={'start'} //start
               useOriginalCharsOnly={false} //true
-              characters={'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+'}
-              maxIterations={50}
+              //characters={'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+'}
+              //maxIterations={50}
               animateOn={'view'}
               
 
