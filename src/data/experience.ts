@@ -9,9 +9,9 @@ export const experiences: Experience[] = [
     period: "2019 - Present",
     location: "Basking Ridge, NJ",
     description: [
-      "Specializing in AI red teaming and prompt engineering for enterprise clients",
-      "Contributing to open source projects including PromptFoo for AI safety testing", 
-      "Building automation solutions using AWS Bedrock for AI model deployment",
+      "Open source contributor: PromptFoo", 
+      "Specializing in AI red teaming and Prompt Engineering for robust model evaluation",
+      "Streamlit Web Apps: Building automation solutions using AWS Bedrock for AI model deployment",
       "Data wrangling and visualization for complex datasets using Python ecosystem"
     ],
     technologies: ["Python", "AWS Bedrock", "Prompt Engineering", "AI Red Teaming", "Data Visualization", "Automation"],
@@ -62,7 +62,7 @@ export const experiences: Experience[] = [
   {
     id: "alpha-it",
     company: "Alpha IT Partners",
-    role: "Data Analyst",
+    role: "Intern: Data Analyst",
     period: "2016 - 2017", 
     location: "Boston, MA",
     description: [
@@ -80,7 +80,7 @@ export const experiences: Experience[] = [
   {
     id: "bluefly",
     company: "Bluefly, NYC",
-    role: "Business Intelligence Analyst",
+    role: "Intern: Business Intelligence Analyst",
     period: "2016 - 2016",
     location: "New York, NY", 
     description: [

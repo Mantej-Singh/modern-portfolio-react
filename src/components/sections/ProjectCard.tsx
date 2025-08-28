@@ -23,7 +23,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       spotlightColor={project.featured ? 'hsl(var(--primary))' : 'hsl(var(--secondary))'}
     >
       <motion.div
-        className="bg-card border border-border rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden relative h-full flex flex-col"
+        className="cursor-target bg-card border border-border rounded-lg p-6 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden relative h-full flex flex-col"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
