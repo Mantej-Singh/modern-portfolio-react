@@ -1,4 +1,5 @@
 import type { Experience } from '@/types'
+import { getAssetPath } from '@/lib/paths'
 
 export const experiences: Experience[] = [
 
@@ -15,7 +16,7 @@ export const experiences: Experience[] = [
       "Data wrangling and visualization for complex datasets using Python ecosystem"
     ],
     technologies: ["Python", "AWS Bedrock", "Prompt Engineering", "AI Red Teaming", "Data Visualization", "Automation"],
-    image: "/images/optimizilla/VZ.png",
+    image: getAssetPath("images/optimizilla/VZ.png"),
     achievements: [
       "Open source contributor to PromptFoo",
       "AI safety and red teaming expertise",
@@ -36,7 +37,7 @@ export const experiences: Experience[] = [
       "Created and maintained data dictionaries and catalogs to improve data discoverability"
     ],
     technologies: ["Python", "SQL", "Data Migration", "ETL", "Data Cataloging", "Data Warehousing", "Reporting"],
-    image: "/images/optimizilla/ADPlogo.png",
+    image: getAssetPath("images/optimizilla/ADPlogo.png"),
     achievements: [
       "POC on Alation for Data Lineage"
     ]
@@ -54,7 +55,7 @@ export const experiences: Experience[] = [
       "Built scalable data pipelines for real-time transaction monitoring"
     ],
     technologies: ["Apache Spark MLlib", "H2O Flow", "Alpine Data", "HIVE SQL", "Python", "R", "DataRobot"],
-    image: "/images/jerseycity-min.png",
+    image: getAssetPath("images/jerseycity-min.png"),
     achievements: [
       "Led AML Discovery Analytics POC",
     ]
@@ -72,7 +73,7 @@ export const experiences: Experience[] = [
       "Built dashboards for executive reporting and KPI tracking"
     ],
     technologies: ["Python", "SQL", "Excel", "Tableau", "Data Pipeline", "ETL"],  
-    image: "/images/Boston-mini.jpg",
+    image: getAssetPath("images/Boston-mini.jpg"),
     achievements: [
       "Reduced report generation time from days to hours"
     ]
@@ -90,7 +91,7 @@ export const experiences: Experience[] = [
       "Implemented Joins, Data Blending, Custom SQL in Tableau, created dashboards & pivots"
     ],
     technologies: ["R", "SQL", "Tableau", "Social Media Analytics", "Data Blending", "Excel"],
-    image: "/images/NYC-min.jpg", 
+    image: getAssetPath("images/NYC-min.jpg"), 
     achievements: [
       "Built social media sentiment analysis tool",
       "Delivered 10 strategic recommendations for sales growth",
@@ -110,7 +111,7 @@ export const experiences: Experience[] = [
       "Mentored junior developers on best practices for BI development"
     ],
     technologies: ["Informatica", "SQL", "ETL", "Data Warehousing", "Business Intelligence", "VMware", "EMC"],
-    image: "/images/a1-min.jpg",
+    image: getAssetPath("images/a1-min.jpg"),
     achievements: [
       "Saved 2+ hours daily through automation",
       "Helped in ETL optimization projects",
