@@ -18,6 +18,7 @@ export function TargetCursor({
 }: TargetCursorProps) {
   const [isTargeting, setIsTargeting] = useState(false)
   const [targetBounds, setTargetBounds] = useState<DOMRect | null>(null)
+  const [isInsideContainer, setIsInsideContainer] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   
   const cursorX = useMotionValue(-100)
@@ -33,6 +34,8 @@ export function TargetCursor({
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      if (!isInsideContainer) return // Only work inside container
+      
       if (isTargeting && targetBounds) {
         // Position cursor to frame the target element
         cursorX.set(targetBounds.left - 10)
@@ -66,8 +69,23 @@ export function TargetCursor({
       }
     }
     
+    const handleContainerEnter = () => {
+      setIsInsideContainer(true)
+    }
+    
+    const handleContainerLeave = () => {
+      setIsInsideContainer(false)
+      setIsTargeting(false)
+      setTargetBounds(null)
+    }
+    
     if (containerRef.current) {
-      const targetElements = containerRef.current.querySelectorAll(targetSelector)
+      const container = containerRef.current
+      const targetElements = container.querySelectorAll(targetSelector)
+      
+      // Add container enter/leave listeners
+      container.addEventListener('mouseenter', handleContainerEnter)
+      container.addEventListener('mouseleave', handleContainerLeave)
       
       targetElements.forEach(element => {
         element.addEventListener('mouseenter', handleMouseEnter as EventListener)
@@ -77,6 +95,9 @@ export function TargetCursor({
       window.addEventListener('mousemove', handleMouseMove)
       
       return () => {
+        container.removeEventListener('mouseenter', handleContainerEnter)
+        container.removeEventListener('mouseleave', handleContainerLeave)
+        
         targetElements.forEach(element => {
           element.removeEventListener('mouseenter', handleMouseEnter as EventListener)
           element.removeEventListener('mouseleave', handleMouseLeave as EventListener)
@@ -84,7 +105,7 @@ export function TargetCursor({
         window.removeEventListener('mousemove', handleMouseMove)
       }
     }
-  }, [cursorX, cursorY, cursorWidth, cursorHeight, targetSelector, isTargeting, targetBounds])
+  }, [cursorX, cursorY, cursorWidth, cursorHeight, targetSelector, isTargeting, targetBounds, isInsideContainer])
   
   return (
     <div 
@@ -184,9 +205,9 @@ export function TargetCursor({
         }}
         initial={{ opacity: 0, scale: 0 }}
         animate={{
-          opacity: !isTargeting ? 1 : 0,
-          scale: !isTargeting ? 1 : 0,
-          rotate: !isTargeting ? 360 : 0
+          opacity: (!isTargeting && isInsideContainer) ? 1 : 0,
+          scale: (!isTargeting && isInsideContainer) ? 1 : 0,
+          rotate: (!isTargeting && isInsideContainer) ? 360 : 0
         }}
         transition={{
           opacity: { duration: 0.2 },
