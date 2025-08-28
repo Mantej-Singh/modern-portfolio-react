@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Code2, Database, Cloud, Brain, Zap, Shield } from 'lucide-react'
+import { Code2, Database, Cloud, Brain, Zap, Shield, Info } from 'lucide-react'
 
 interface SkillCategory {
   id: string
@@ -126,6 +127,8 @@ const cardVariants = {
 }
 
 export function SkillsVisualization() {
+  const [showTooltip, setShowTooltip] = useState(false)
+
   return (
     <section id="skills" className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
@@ -136,9 +139,24 @@ export function SkillsVisualization() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-4 text-4xl font-bold text-foreground">
-            Skills & Technologies
-          </h2>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <h2 className="text-4xl font-bold text-foreground">
+              Skills & Technologies
+            </h2>
+            <div className="relative">
+              <Info 
+                className="w-5 h-5 text-muted-foreground hover:text-primary cursor-help transition-colors"
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+              />
+              {showTooltip && (
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-popover border border-border rounded-md shadow-lg text-sm text-popover-foreground whitespace-nowrap z-10">
+                  Below percentage represents my confidence level and enthusiasm for working with this technology
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-border"></div>
+                </div>
+              )}
+            </div>
+          </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A comprehensive overview of my technical expertise across AI, data engineering, and software development
           </p>

@@ -268,20 +268,10 @@ src/
 
 ## 🌐 **Deployment Guide**
 
-### **GitHub Pages**
+### **GitHub Pages (I am using this)**
 ```bash
 npm run build
 # Deploy dist/ folder to gh-pages branch
-```
-
-### **Vercel** (Recommended)
-```bash
-# Connect GitHub repository for auto-deployment
-```
-
-### **Netlify**
-```bash
-# Drag & drop dist/ folder after build
 ```
 
 > [!WARNING]

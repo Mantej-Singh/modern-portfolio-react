@@ -1,6 +1,14 @@
 import { socialLinks, personalInfo } from '@/data/personal'
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { DecryptedText } from '@/components/animations'
+
+// Custom X (Twitter) icon component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </svg>
+)
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -57,8 +65,8 @@ export function Footer() {
                         return <Github className="h-5 w-5" />
                       case 'LinkedIn':
                         return <Linkedin className="h-5 w-5" />
-                      case 'Twitter':
-                        return <Twitter className="h-5 w-5" />
+                      case 'X':
+                        return <XIcon className="h-5 w-5" />
                       case 'Email':
                         return <Mail className="h-5 w-5" />
                       default:
@@ -72,8 +80,8 @@ export function Footer() {
                         return "🚀 Check out my GitHub"
                       case 'LinkedIn':
                         return "💼 Connect with me on LinkedIn - Let's network!"
-                      case 'Twitter':
-                        return "🐦 Follow me on Twitter"
+                      case 'X':
+                        return "🚀 Follow me on X"
                       case 'Email':
                         return "✉️ Drop me a line - I reply within 24hrs, No Promises tho!"
                       default:
@@ -111,7 +119,16 @@ export function Footer() {
               &copy; {currentYear} {personalInfo.name}. All rights reserved.
             </p>
             <p className="flex items-center justify-center gap-1">
-              Forged together with Claude Code <span className="text-red-500">❤️</span>
+              <DecryptedText 
+                text="Forged together with Claude Code ❤️"
+                animateOn="view"
+                sequential={true}
+                revealDirection="start"
+                speed={66}
+                className="text-muted-foreground"
+                encryptedClassName="text-muted-foreground"
+              />
+              {/* <span className="text-red-500 ml-1">❤️</span> */}
             </p>
           </div>
         </div>
