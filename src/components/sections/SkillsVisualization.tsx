@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
-import { Code2, Database, Cloud, Brain, Zap, Shield, Info } from 'lucide-react'
+import { Code2, Database, Cloud, Brain, Zap, Shield, Info, ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface SkillCategory {
   id: string
@@ -128,6 +128,19 @@ const cardVariants = {
 
 export function SkillsVisualization() {
   const [showTooltip, setShowTooltip] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % skillCategories.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + skillCategories.length) % skillCategories.length)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
 
   return (
     <section id="skills" className="py-20 px-4 bg-muted/30">
@@ -150,7 +163,7 @@ export function SkillsVisualization() {
                 onMouseLeave={() => setShowTooltip(false)}
               />
               {showTooltip && (
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-popover border border-border rounded-md shadow-lg text-sm text-popover-foreground whitespace-nowrap z-10">
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-popover border border-border rounded-md shadow-lg text-sm text-popover-foreground z-10 w-72 max-w-[calc(100vw-2rem)] md:w-auto md:whitespace-nowrap -ml-36 md:ml-0 md:-translate-x-1/2">
                   Below percentage represents my confidence level and enthusiasm for working with this technology
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-border"></div>
                 </div>
@@ -162,8 +175,9 @@ export function SkillsVisualization() {
           </p>
         </motion.div>
 
+        {/* Desktop Grid Layout */}
         <motion.div 
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+          className="hidden md:grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -221,6 +235,115 @@ export function SkillsVisualization() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile Carousel Layout */}
+        <div className="md:hidden max-w-sm mx-auto">
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden rounded-xl">
+              <motion.div 
+                className="flex"
+                animate={{ x: -currentSlide * 100 + '%' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              >
+                {skillCategories.map((category, index) => {
+                  const isAIML = category.id === 'ai-ml' // Feature AI & ML category
+                  
+                  return (
+                    <div key={category.id} className="w-full flex-shrink-0">
+                      <Card className={`shadow-lg transition-all duration-300 ${
+                        isAIML ? 'border-primary/50 bg-primary/5' : ''
+                      }`}>
+                        <CardHeader className="pb-3">
+                          <CardTitle className={`flex items-center gap-2 ${isAIML ? 'text-lg' : 'text-base'}`}>
+                            <div className={`p-1.5 rounded-lg bg-primary/10 text-primary transition-colors ${
+                              isAIML ? 'bg-primary text-primary-foreground' : ''
+                            }`}>
+                              {category.icon}
+                            </div>
+                            {category.title}
+                          </CardTitle>
+                          <CardDescription className="text-xs">
+                            {category.description}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          {/* Show top 4 skills for mobile */}
+                          {category.skills.slice(0, 4).map((skill, skillIndex) => (
+                            <div key={skill.name} className="space-y-1">
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs font-medium text-foreground">
+                                  {skill.name}
+                                </span>
+                                <div className="flex items-center gap-1">
+                                  <Badge variant="secondary" className="text-xs px-1 py-0">
+                                    {skill.experience}
+                                  </Badge>
+                                  <span className="text-xs text-muted-foreground">
+                                    {skill.level}%
+                                  </span>
+                                </div>
+                              </div>
+                              <motion.div
+                                initial={{ width: 0 }}
+                                whileInView={{ width: "100%" }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1, delay: skillIndex * 0.1 }}
+                              >
+                                <Progress 
+                                  value={skill.level} 
+                                  className="h-1.5"
+                                />
+                              </motion.div>
+                            </div>
+                          ))}
+                          {category.skills.length > 4 && (
+                            <div className="text-xs text-muted-foreground text-center pt-1">
+                              +{category.skills.length - 4} more skills
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </div>
+                  )
+                })}
+              </motion.div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur border border-border rounded-full flex items-center justify-center shadow-lg hover:bg-accent transition-colors"
+              aria-label="Previous skill category"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur border border-border rounded-full flex items-center justify-center shadow-lg hover:bg-accent transition-colors"
+              aria-label="Next skill category"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-6 gap-2">
+              {skillCategories.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    currentSlide === index
+                      ? 'bg-primary w-6'
+                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/60'
+                  }`}
+                  aria-label={`Go to skill category ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Summary Stats */}
         <motion.div 
