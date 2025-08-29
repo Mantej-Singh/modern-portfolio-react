@@ -137,11 +137,15 @@ npm run dev  # Opens at http://localhost:5173
 
 ## ✨ **Key Features**
 
+### **Latest Release:**
+- **📱 Horizontal Carousel Navigation** - Mobile-only carousels for Work Experience, Skills & Technologies, and Featured Projects with smooth spring animations and desktop grid preservation
+
+### **Core Features:**
 - **🎯 Dynamic Work Experience Timeline** - Auto-calculates years worked with color-coded badges
 - **📊 Interactive Skills Visualization** - Realistic proficiency levels with animated progress bars  
 - **🎮 Smart Tooltip System** - Context-aware tooltips with randomized engaging messages
 - **⚡ Performance Optimized** - Code splitting, lazy loading, and PWA capabilities
-- **🎨 Advanced Animations** - DecryptedText, SpotlightCard, PrismBackground effects
+- **🎨 Advanced Animations** - DecryptedText, SpotlightCard, PrismBackground, TargetCursor effects
 - **📱 Responsive Design** - Mobile-first approach with touch-friendly interactions
 - **🌙 Dark/Light Theme** - System preference detection with manual toggle
 - **🔍 Type-Safe Development** - Full TypeScript implementation with strict typing
