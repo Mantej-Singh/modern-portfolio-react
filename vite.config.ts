@@ -3,9 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
-  const isProduction = command === 'build'
-  
+export default defineConfig(() => {
   return {
     plugins: [react()],
     resolve: {
