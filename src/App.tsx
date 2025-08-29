@@ -17,6 +17,7 @@ const SkillsVisualization = lazy(() => import('@/components/sections/SkillsVisua
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentProjectSlide, setCurrentProjectSlide] = useState(0)
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % experiences.length)
@@ -28,6 +29,19 @@ function App() {
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
+  }
+
+  // Projects carousel navigation
+  const nextProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev + 1) % featuredProjects.length)
+  }
+
+  const prevProjectSlide = () => {
+    setCurrentProjectSlide((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length)
+  }
+
+  const goToProjectSlide = (index: number) => {
+    setCurrentProjectSlide(index)
   }
 
   return (
@@ -421,7 +435,8 @@ function App() {
             </motion.div>
 
             <TargetCursor>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+              {/* Desktop Grid Layout */}
+              <div className="hidden md:grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
                 {featuredProjects.map((project, index) => (
                   <ProjectCard 
                     key={project.id} 
@@ -429,6 +444,72 @@ function App() {
                     index={index} 
                   />
                 ))}
+              </div>
+
+              {/* Mobile Carousel */}
+              <div className="md:hidden max-w-sm mx-auto">
+                <div className="relative">
+                  {/* Carousel Container */}
+                  <div className="overflow-hidden rounded-xl">
+                    <motion.div 
+                      className="flex"
+                      animate={{ x: -currentProjectSlide * 100 + '%' }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    >
+                      {featuredProjects.map((project) => {
+                        const isAICategory = project.category === 'ai'
+                        const isAutomationCategory = project.category === 'automation'
+                        
+                        return (
+                          <div key={project.id} className="w-full flex-shrink-0">
+                            <div className={`transition-all duration-300 ${
+                              isAICategory ? 'ring-2 ring-primary/30' : 
+                              isAutomationCategory ? 'ring-2 ring-blue-500/30' : ''
+                            }`}>
+                              <ProjectCard 
+                                project={project} 
+                                index={0} 
+                              />
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </motion.div>
+                  </div>
+
+                  {/* Navigation Arrows */}
+                  <button
+                    onClick={prevProjectSlide}
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur border border-border rounded-full flex items-center justify-center shadow-lg hover:bg-accent transition-colors"
+                    aria-label="Previous project"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  
+                  <button
+                    onClick={nextProjectSlide}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-background/80 backdrop-blur border border-border rounded-full flex items-center justify-center shadow-lg hover:bg-accent transition-colors"
+                    aria-label="Next project"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+
+                  {/* Dots Indicator */}
+                  <div className="flex justify-center mt-6 gap-2">
+                    {featuredProjects.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToProjectSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          currentProjectSlide === index
+                            ? 'bg-primary w-6'
+                            : 'bg-muted-foreground/30 hover:bg-muted-foreground/60'
+                        }`}
+                        aria-label={`Go to project ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </TargetCursor>
           </div>
