@@ -13,8 +13,8 @@ export default defineConfig(({ command }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
-    // Configure base path: root for dev, subdirectory for production GitHub Pages
-    base: isProduction ? '/modern-portfolio-react/' : '/',
+    // Configure base path: root for custom domain
+    base: '/',
     build: {
       outDir: 'dist',
       assetsDir: 'assets',
