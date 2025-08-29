@@ -2,11 +2,18 @@
 
 A modern, performant portfolio website built with React 19.1, TypeScript, and cutting-edge animations. This project showcases a complete transformation from a static HTML5UP template to a fully interactive React application with advanced animations, real-time data, and optimized performance.
 
+
+
+
 ## 🎬 **The Transformation Story**
 
 ### **From Static HTML5UP to Dynamic React** 
 
-This portfolio represents a complete evolution from legacy web development (see [website](https://mantej-singh.github.io/)/[Repo](https://github.com/Mantej-Singh/mantej-singh.github.io)) to modern React architecture. Here's the journey and why each change was necessary:
+What began in 2016 as a humble experiment in legacy web development (see the [original website](https://mantej-singh.github.io/) and [repo](https://github.com/Mantej-Singh/mantej-singh.github.io)) has grown into a showcase of modern React architecture. My journey took me from the confines of a lengthy GitHub Pages URL (`mantej-singh.github.io/modern-portfolio-react/`) to the pride of a professional custom domain (`mantejsingh.dev`), powered by a strategic investment in Cloudflare’s domain and CDN services. **[Read my complete domain migration journey🌐  →](docs/cloudflare.md)**  
+
+
+
+Let me walk you through this transformation—and why every step mattered:
 
 #### **🔙 The HTML5UP Era (Static Template)**
 The original portfolio was built on HTML5UP's "Landed" template - a beautiful but static solution with several limitations:
