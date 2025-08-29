@@ -1,10 +1,9 @@
 /**
  * Get the correct base path for assets based on environment
- * Development: /
- * Production: /modern-portfolio-react/
+ * Both development and production use root path for custom domain
  */
 export function getBasePath(): string {
-  return import.meta.env.DEV ? '/' : '/modern-portfolio-react/'
+  return '/'
 }
 
 /**
