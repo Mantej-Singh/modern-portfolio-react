@@ -302,13 +302,8 @@ This portfolio is designed for continuous evolution. Planned improvements includ
 - **Figma Community**: [figma.com/community/website-templates](https://www.figma.com/community/website-templates) - Website templates and UI kits
 - **React Bits Animations**: [reactbits.dev/animations](https://reactbits.dev/animations/) - Animation examples and inspiration
 
-### **Technical Resources**
-- **React 19.1**: [react.dev](https://react.dev) - Latest React with concurrent features
-- **shadcn/ui**: [ui.shadcn.com](https://ui.shadcn.com) - Component library and design system
-- **Tailwind CSS**: [tailwindcss.com](https://tailwindcss.com/docs) - Utility-first CSS framework
-- **Framer Motion**: [framer.com/docs](https://www.framer.com/docs/) - Production-ready motion library
-- **TypeScript**: [typescriptlang.org](https://www.typescriptlang.org) - Type-safe JavaScript
-
+> [!TIP]
+> **I relied on these heavily for any new feature or ideas**
 ---
 
 ## 🤝 **Contributing**
