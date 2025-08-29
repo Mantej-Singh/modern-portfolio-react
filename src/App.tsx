@@ -270,7 +270,7 @@ function App() {
                     animate={{ x: -currentSlide * 100 + '%' }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   >
-                    {experiences.map((experience, index) => {
+                    {experiences.map((experience) => {
                       const isCurrentPosition = experience.period.includes('Present')
                       const isVerizon = experience.company === 'Verizon'
                       

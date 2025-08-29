@@ -246,7 +246,7 @@ export function SkillsVisualization() {
                 animate={{ x: -currentSlide * 100 + '%' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               >
-                {skillCategories.map((category, index) => {
+                {skillCategories.map((category) => {
                   const isAIML = category.id === 'ai-ml' // Feature AI & ML category
                   
                   return (
