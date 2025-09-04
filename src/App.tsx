@@ -102,7 +102,10 @@ function App() {
         </section>
 
         {/* About section */}
-        <section id="about" className="py-20 px-4 bg-muted/30">
+        <section 
+          id="about" 
+          className="py-20 px-4 bg-muted/30"
+        >
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h2 

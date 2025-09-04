@@ -70,3 +70,10 @@ export interface AnimationConfig {
   easing: string
   delay?: number
 }
+
+// Global window extensions
+declare global {
+  interface Window {
+    aboutSectionRef?: (node?: Element | null) => void
+  }
+}

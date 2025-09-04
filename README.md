@@ -145,9 +145,10 @@ npm run dev  # Opens at http://localhost:5173
 ## ✨ **Key Features**
 
 ### **Latest Release:**
-- **📱 Horizontal Carousel Navigation** - Mobile-only carousels for Work Experience, Skills & Technologies, and Featured Projects with smooth spring animations and desktop grid preservation
+- **🍎 iOS26-Inspired Glass Design** - Premium navigation with ultra-transparent effects, backdrop-blur elements, and subtle elasticity animations matching iOS26 design language
 
 ### **Core Features:**
+- **📱 Horizontal Carousel Navigation** - Mobile-only carousels for Work Experience, Skills & Technologies, and Featured Projects with smooth spring animations and desktop grid preservation
 - **🎯 Dynamic Work Experience Timeline** - Auto-calculates years worked with color-coded badges
 - **📊 Interactive Skills Visualization** - Realistic proficiency levels with animated progress bars  
 - **🎮 Smart Tooltip System** - Context-aware tooltips with randomized engaging messages
