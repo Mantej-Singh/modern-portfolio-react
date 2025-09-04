@@ -120,7 +120,7 @@ export function Footer() {
             </p>
             <p className="flex items-center justify-center gap-1">
               <DecryptedText 
-                text="Forged together with Claude Code ❤️"
+                text="⚒️ Forged together with Claude Code ❤️"
                 animateOn="view"
                 sequential={true}
                 revealDirection="start"
