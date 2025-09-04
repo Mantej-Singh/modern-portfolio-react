@@ -7,7 +7,6 @@ import { motion } from 'framer-motion'
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [brandOpacity, setBrandOpacity] = useState(1)
-  const [hasPassedAbout, setHasPassedAbout] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
   // Detect mobile screen size
@@ -33,10 +32,8 @@ export function Header() {
 
       if (isInHeroSection) {
         setBrandOpacity(1)
-        setHasPassedAbout(false)
       } else {
         setBrandOpacity(0)
-        setHasPassedAbout(true)
       }
     }
 
