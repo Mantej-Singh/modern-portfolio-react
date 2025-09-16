@@ -4,8 +4,9 @@ export const personalInfo: PersonalInfo = {
   name: "Mantej Singh Dhanjal",
   title: "Python & AI Engineer",
   bio: `I follow 3 principles in my life: "Focus on God", "Honest Living", "Sharing with others". 
-        Out of 7 days, I share 2 days volunteering in the Sikh Temple. 
+        Each week, I try to volunteer at the Sikh Temple, dedicating Sunday to community service. 
         The rest of the days, I love building AI solutions and data visualization projects that make a high level of impact. 
+        I also enjoy woodworking and have crafted several pieces for our home.
         I am patient with people and impatient with technology.`,
   tagline: `👋 Hi! I'm Mantej Singh- turning data chaos into AI magic @ Verizon
 
