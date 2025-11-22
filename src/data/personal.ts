@@ -48,9 +48,12 @@ export const socialLinks: SocialLink[] = [
   }
 ]
 
+// UPDATED [2025-11-22]: Changed to new 2025 DOCX resume
 export const contactInfo: ContactInfo = {
   email: "mdmantejsingh@gmail.com",
   location: "Harrison, New Jersey, USA",
   socialLinks,
-  resumeUrl: "/assets/Resume/Mantej-Singh CV.pdf"
+  resumeUrl: "/Mantej-Singh-Resume-2025.docx"
 }
+// DEPRECATED - OLD CODE:
+// resumeUrl: "/assets/Resume/Mantej-Singh CV.pdf"

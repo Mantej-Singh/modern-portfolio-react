@@ -55,14 +55,18 @@ export function Header() {
     { label: "Contact", href: "#contact" }
   ]
 
+  // UPDATED [2025-11-22]: Changed to new 2025 DOCX resume
   const handleResumeDownload = () => {
     const link = document.createElement('a')
-    link.href = '/Mantej-Singh CV.pdf'
-    link.download = 'Mantej-Singh CV.pdf'
+    link.href = '/Mantej-Singh-Resume-2025.docx'
+    link.download = 'Mantej-Singh-Resume-2025.docx'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
   }
+  // DEPRECATED - OLD CODE:
+  // link.href = '/Mantej-Singh CV.pdf'
+  // link.download = 'Mantej-Singh CV.pdf'
 
   return (
     <header className="sticky top-0 z-50">
