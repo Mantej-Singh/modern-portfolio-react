@@ -4,7 +4,9 @@ import { Footer } from '@/components/layout/Footer'
 import { personalInfo } from '@/data/personal'
 import { experiences } from '@/data/experience'
 import { featuredProjects } from '@/data/projects'
-import { DecryptedText, PrismBackground, TargetCursor } from '@/components/animations'
+// UPDATED 2025-11-22: Replaced PrismBackground with Particles for cleaner background
+import { DecryptedText, TargetCursor } from '@/components/animations'
+import Particles from '@/components/animations/Particles'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { ProjectCard } from '@/components/sections/ProjectCard'
 import { SectionLoadingSkeleton } from '@/components/ui/loading-spinner'
@@ -50,10 +52,22 @@ function App() {
       
       {/* Main content area */}
       <main className="flex-1">
-        {/* Hero section with PrismBackground and DecryptedText */}
-        <section id="hero" className="relative py-32 px-4 overflow-hidden">
-          <PrismBackground />
-          <div className="container mx-auto text-center relative z-10">
+        {/* Hero section with Particles and DecryptedText */}
+        {/* UPDATED 2025-11-22: Switched to Particles - clean white particle background with hover interaction */}
+        <section id="hero" className="relative min-h-screen py-32 px-4 overflow-hidden flex items-center">
+          <div className="absolute inset-0 z-0">
+            <Particles
+              particleColors={['#ffffff', '#ffffff']}
+              particleCount={200}
+              particleSpread={15}
+              speed={0.2}
+              particleBaseSize={120}
+              moveParticlesOnHover={true}
+              alphaParticles={false}
+              disableRotation={false}
+            />
+          </div>
+          <div className="container mx-auto text-center relative z-10 pointer-events-none">
             <DecryptedText 
               text="WHO AM I?"
               className="mb-8 text-6xl md:text-7xl font-bold text-foreground tracking-tight"
@@ -75,8 +89,8 @@ function App() {
             >
               {personalInfo.tagline}
             </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center pointer-events-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.5, duration: 0.8 }}
