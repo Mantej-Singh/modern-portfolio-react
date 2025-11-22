@@ -1,5 +1,7 @@
 export { DecryptedText } from './DecryptedText'
-export { PrismBackground } from './PrismBackground'  
+// REMOVED 2025-11-22: Replaced with Particles background
+// export { PrismBackground } from './PrismBackground'
 export { ScrollStack } from './ScrollStack'
 export { TargetCursor } from './TargetCursor'
 export { SpotlightCard } from './SpotlightCard'
+export { default as Particles } from './Particles'
