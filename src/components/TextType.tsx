@@ -1,6 +1,8 @@
 'use client';
 
-import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+// UPDATED [2025-11-23]: Fixed TypeScript import for verbatimModuleSyntax compatibility
+import { useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+import type { ElementType } from 'react';
 import { gsap } from 'gsap';
 
 interface TextTypeProps {
