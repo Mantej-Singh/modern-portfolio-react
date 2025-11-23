@@ -122,7 +122,7 @@ export function Header() {
               className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-black/20 backdrop-blur-xl px-4 py-2 text-sm font-medium text-foreground hover:bg-white/10 hover:text-primary transition-all duration-200 hover:scale-105 shadow-xl shadow-black/10"
             >
               <Download className="w-4 h-4" />
-              Resume
+              Résumé
             </button>
             <a
               href={personalInfo.email.includes('@') ? `mailto:${personalInfo.email}` : personalInfo.email}
@@ -179,7 +179,7 @@ export function Header() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-border/30 bg-background/50 backdrop-blur-sm px-6 py-3 text-sm font-medium text-foreground hover:bg-muted/50 hover:text-primary transition-all duration-200"
               >
                 <Download className="w-4 h-4" />
-                Resume
+                Résumé
               </button>
               <a
                 href={personalInfo.email.includes('@') ? `mailto:${personalInfo.email}` : personalInfo.email}

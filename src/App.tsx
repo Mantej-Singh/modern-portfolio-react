@@ -97,7 +97,7 @@ function App() {
             >
               <motion.a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -105,7 +105,7 @@ function App() {
               </motion.a>
               <motion.a
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-lg border border-border bg-background/80 backdrop-blur px-8 py-4 text-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="inline-flex items-center justify-center rounded-full border border-border bg-background/80 backdrop-blur px-8 py-4 text-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -256,13 +256,13 @@ function App() {
                               {experience.technologies.slice(0, 6).map((tech) => (
                                 <span
                                   key={tech}
-                                  className="px-2 py-1 text-xs bg-accent text-accent-foreground rounded border"
+                                  className="px-2 py-1 text-xs bg-muted text-foreground rounded border border-border"
                                 >
                                   {tech}
                                 </span>
                               ))}
                               {experience.technologies.length > 6 && (
-                                <span className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded">
+                                <span className="px-2 py-1 text-xs bg-muted/50 text-muted-foreground rounded">
                                   +{experience.technologies.length - 6} more
                                 </span>
                               )}
@@ -367,13 +367,13 @@ function App() {
                                 {experience.technologies.slice(0, 4).map((tech) => (
                                   <span
                                     key={tech}
-                                    className="px-1.5 py-0.5 text-xs bg-accent text-accent-foreground rounded"
+                                    className="px-1.5 py-0.5 text-xs bg-muted text-foreground rounded border border-border"
                                   >
                                     {tech}
                                   </span>
                                 ))}
                                 {experience.technologies.length > 4 && (
-                                  <span className="px-1.5 py-0.5 text-xs bg-muted text-muted-foreground rounded">
+                                  <span className="px-1.5 py-0.5 text-xs bg-muted/50 text-muted-foreground rounded">
                                     +{experience.technologies.length - 4}
                                   </span>
                                 )}

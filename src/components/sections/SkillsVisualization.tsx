@@ -353,19 +353,19 @@ export function SkillsVisualization() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <div className="text-center p-6 bg-card rounded-lg border border-border">
+          <div className="text-center p-6 bg-card rounded-xl border border-border">
             <div className="text-3xl font-bold text-primary mb-2">48+</div>
             <div className="text-sm text-muted-foreground">GitHub Repositories</div>
           </div>
-          <div className="text-center p-6 bg-card rounded-lg border border-border">
+          <div className="text-center p-6 bg-card rounded-xl border border-border">
             <div className="text-3xl font-bold text-primary mb-2">8+</div>
             <div className="text-sm text-muted-foreground">Years Experience</div>
           </div>
-          <div className="text-center p-6 bg-card rounded-lg border border-border">
+          <div className="text-center p-6 bg-card rounded-xl border border-border">
             <div className="text-3xl font-bold text-primary mb-2">20+</div>
             <div className="text-sm text-muted-foreground">Technologies</div>
           </div>
-          <div className="text-center p-6 bg-card rounded-lg border border-border">
+          <div className="text-center p-6 bg-card rounded-xl border border-border">
             <div className="text-3xl font-bold text-primary mb-2">6</div>
             <div className="text-sm text-muted-foreground">Skill Categories</div>
           </div>

@@ -5,3 +5,5 @@ export { ScrollStack } from './ScrollStack'
 export { TargetCursor } from './TargetCursor'
 export { SpotlightCard } from './SpotlightCard'
 export { default as Particles } from './Particles'
+// REMOVED 2025-11-22: Bat animation removed (simplified theme toggle)
+// export { BatTransition } from './BatTransition'
