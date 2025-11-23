@@ -3,6 +3,7 @@ export interface PersonalInfo {
   name: string
   title: string
   bio: string
+  hobbiesText?: string
   tagline: string
   location: string
   email: string

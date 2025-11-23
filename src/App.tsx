@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState } from 'react'
+import TextType from '@/components/TextType'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { personalInfo } from '@/data/personal'
@@ -12,6 +13,13 @@ import { ProjectCard } from '@/components/sections/ProjectCard'
 import { SectionLoadingSkeleton } from '@/components/ui/loading-spinner'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { motion } from 'framer-motion'
+// UPDATED [2025-11-23]: Added Tooltip for "Beyond work" hover text
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 
 // Lazy load heavy components
 const ContactForm = lazy(() => import('@/components/sections/ContactForm').then(module => ({ default: module.ContactForm })))
@@ -20,6 +28,7 @@ const SkillsVisualization = lazy(() => import('@/components/sections/SkillsVisua
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [currentProjectSlide, setCurrentProjectSlide] = useState(0)
+  const [showHobbies, setShowHobbies] = useState(false)
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % experiences.length)
@@ -131,15 +140,55 @@ function App() {
               >
                 About Me
               </motion.h2>
-              <motion.p 
-                className="text-lg text-muted-foreground leading-relaxed mb-10"
+              <motion.div
+                className="text-lg text-muted-foreground leading-relaxed mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                {personalInfo.bio}
-              </motion.p>
+                <p className="whitespace-pre-line">{personalInfo.bio}</p>
+
+                {/* Beyond work trigger */}
+                {/* UPDATED [2025-11-23]: Added tooltip with hover text "Click me to find out more about my hobbies" */}
+                <p className="mt-4">
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span
+                          onClick={() => setShowHobbies(!showHobbies)}
+                          className="text-primary underline decoration-dotted cursor-pointer hover:decoration-solid transition-all inline-flex items-center gap-1"
+                        >
+                          Beyond work
+                          <span className="text-xs">{showHobbies ? '▼' : '→'}</span>
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Click me to find out more about my hobbies</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </p>
+
+                {/* TypeWriter Animation */}
+                {showHobbies && personalInfo.hobbiesText && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4"
+                  >
+                    <TextType
+                      text={personalInfo.hobbiesText}
+                      typingSpeed={45}
+                      pauseDuration={1500}
+                      showCursor={true}
+                      loop={false}
+                      className="text-muted-foreground"
+                    />
+                  </motion.div>
+                )}
+              </motion.div>
               <motion.div 
                 className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-6 py-3 text-sm text-primary"
                 initial={{ opacity: 0, scale: 0.8 }}

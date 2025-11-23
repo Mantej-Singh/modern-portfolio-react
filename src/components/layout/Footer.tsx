@@ -89,6 +89,7 @@ export function Footer() {
                     }
                   }
 
+                  {/* UPDATED [2025-11-23]: Added rounded-lg back for consistent rounded corners across all themes */}
                   return (
                     <Tooltip key={link.platform}>
                       <TooltipTrigger asChild>
