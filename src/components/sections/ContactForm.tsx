@@ -307,10 +307,10 @@ export function ContactForm() {
                     </motion.div>
                   )}
                   
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     disabled={isSubmitting}
-                    className="w-full"
+                    className="w-full rounded-full"
                   >
                     {isSubmitting ? (
                       <motion.div

@@ -89,6 +89,7 @@ export function Footer() {
                     }
                   }
 
+                  {/* UPDATED [2025-11-23]: Added rounded-lg back for consistent rounded corners across all themes */}
                   return (
                     <Tooltip key={link.platform}>
                       <TooltipTrigger asChild>
@@ -120,7 +121,7 @@ export function Footer() {
             </p>
             <p className="flex items-center justify-center gap-1">
               <DecryptedText 
-                text="Forged together with Claude Code ❤️"
+                text="⚒️ Forged together with Claude Code ❤️"
                 animateOn="view"
                 sequential={true}
                 revealDirection="start"

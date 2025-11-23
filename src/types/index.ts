@@ -3,6 +3,7 @@ export interface PersonalInfo {
   name: string
   title: string
   bio: string
+  hobbiesText?: string
   tagline: string
   location: string
   email: string
@@ -69,4 +70,11 @@ export interface AnimationConfig {
   duration: number
   easing: string
   delay?: number
+}
+
+// Global window extensions
+declare global {
+  interface Window {
+    aboutSectionRef?: (node?: Element | null) => void
+  }
 }

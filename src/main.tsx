@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/context/ThemeContext'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="mantej-portfolio-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="mantej-portfolio-theme">
       <App />
     </ThemeProvider>
   </StrictMode>,

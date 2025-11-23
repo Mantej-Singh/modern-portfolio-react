@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @layer base {
+  /* REMOVED 2025-11-22: Light mode removed, replaced with Dark/Dracula theme toggle */
+  /* DEPRECATED - OLD CODE:
   :root {
     --background: 0 0% 100%;
     --foreground: 264 6% 13%;
@@ -25,7 +27,10 @@
     --ring: 49 68% 67%;
     --radius: 0.75rem;
   }
+  */
 
+  /* UPDATED 2025-11-22: Original dark theme - kept as default */
+  /* UPDATED [2025-11-23]: Added --radius variable for rounded corners */
   .dark {
     --background: 308 4% 18%;
     --foreground: 0 0% 81%;
@@ -46,6 +51,31 @@
     --border: 0 0% 25%;
     --input: 0 0% 25%;
     --ring: 50 67% 72%;
+    --radius: 0.75rem;
+  }
+
+  /* ADDED 2025-11-22: Dracula Theme - Official color palette from https://draculatheme.com/spec */
+  .dracula {
+    --background: 231 15% 18%;        /* #282A36 - Main background */
+    --foreground: 60 30% 96%;         /* #F8F8F2 - Default text */
+    --card: 231 15% 18%;              /* #282A36 - Card background */
+    --card-foreground: 60 30% 96%;    /* #F8F8F2 - Card text */
+    --popover: 225 15% 24%;           /* #343746 - Floating elements */
+    --popover-foreground: 60 30% 96%; /* #F8F8F2 - Popover text */
+    --primary: 265 89% 78%;           /* #BD93F9 - Purple (classes, types, variables) */
+    --primary-foreground: 231 15% 18%; /* #282A36 - Dark text on purple */
+    --secondary: 225 27% 51%;         /* #6272A4 - Comment color */
+    --secondary-foreground: 60 30% 96%; /* #F8F8F2 - Light text on secondary */
+    --muted: 232 14% 31%;             /* #44475A - Selection background */
+    --muted-foreground: 225 27% 51%;  /* #6272A4 - Muted text (comments) */
+    --accent: 326 100% 74%;           /* #FF79C6 - Pink (keywords, storage) */
+    --accent-foreground: 231 15% 18%; /* #282A36 - Dark text on pink */
+    --destructive: 0 100% 67%;        /* #FF5555 - Red (errors, warnings) */
+    --destructive-foreground: 60 30% 96%; /* #F8F8F2 - Light text on red */
+    --border: 225 27% 51%;            /* #6272A4 - Current line borders */
+    --input: 232 14% 31%;             /* #44475A - Input background */
+    --ring: 265 89% 78%;              /* #BD93F9 - Focus ring (purple) */
+    --radius: 0.75rem;
   }
 }
 

@@ -1,15 +1,25 @@
 import { lazy, Suspense, useState } from 'react'
+import TextType from '@/components/TextType'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { personalInfo } from '@/data/personal'
 import { experiences } from '@/data/experience'
 import { featuredProjects } from '@/data/projects'
-import { DecryptedText, PrismBackground, TargetCursor } from '@/components/animations'
+// UPDATED 2025-11-22: Replaced PrismBackground with Particles for cleaner background
+import { DecryptedText, TargetCursor } from '@/components/animations'
+import Particles from '@/components/animations/Particles'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { ProjectCard } from '@/components/sections/ProjectCard'
 import { SectionLoadingSkeleton } from '@/components/ui/loading-spinner'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { motion } from 'framer-motion'
+// UPDATED [2025-11-23]: Added Tooltip for "Beyond work" hover text
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 
 // Lazy load heavy components
 const ContactForm = lazy(() => import('@/components/sections/ContactForm').then(module => ({ default: module.ContactForm })))
@@ -18,6 +28,7 @@ const SkillsVisualization = lazy(() => import('@/components/sections/SkillsVisua
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [currentProjectSlide, setCurrentProjectSlide] = useState(0)
+  const [showHobbies, setShowHobbies] = useState(false)
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % experiences.length)
@@ -50,10 +61,22 @@ function App() {
       
       {/* Main content area */}
       <main className="flex-1">
-        {/* Hero section with PrismBackground and DecryptedText */}
-        <section id="hero" className="relative py-32 px-4 overflow-hidden">
-          <PrismBackground />
-          <div className="container mx-auto text-center relative z-10">
+        {/* Hero section with Particles and DecryptedText */}
+        {/* UPDATED 2025-11-22: Switched to Particles - clean white particle background with hover interaction */}
+        <section id="hero" className="relative min-h-screen py-32 px-4 overflow-hidden flex items-center">
+          <div className="absolute inset-0 z-0">
+            <Particles
+              particleColors={['#ffffff', '#ffffff']}
+              particleCount={200}
+              particleSpread={15}
+              speed={0.2}
+              particleBaseSize={120}
+              moveParticlesOnHover={true}
+              alphaParticles={false}
+              disableRotation={false}
+            />
+          </div>
+          <div className="container mx-auto text-center relative z-10 pointer-events-none">
             <DecryptedText 
               text="WHO AM I?"
               className="mb-8 text-6xl md:text-7xl font-bold text-foreground tracking-tight"
@@ -75,15 +98,15 @@ function App() {
             >
               {personalInfo.tagline}
             </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center pointer-events-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.5, duration: 0.8 }}
             >
               <motion.a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -91,7 +114,7 @@ function App() {
               </motion.a>
               <motion.a
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-lg border border-border bg-background/80 backdrop-blur px-8 py-4 text-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="inline-flex items-center justify-center rounded-full border border-border bg-background/80 backdrop-blur px-8 py-4 text-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -102,7 +125,10 @@ function App() {
         </section>
 
         {/* About section */}
-        <section id="about" className="py-20 px-4 bg-muted/30">
+        <section 
+          id="about" 
+          className="py-20 px-4 bg-muted/30"
+        >
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h2 
@@ -114,15 +140,55 @@ function App() {
               >
                 About Me
               </motion.h2>
-              <motion.p 
-                className="text-lg text-muted-foreground leading-relaxed mb-10"
+              <motion.div
+                className="text-lg text-muted-foreground leading-relaxed mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                {personalInfo.bio}
-              </motion.p>
+                <p className="whitespace-pre-line">{personalInfo.bio}</p>
+
+                {/* Beyond work trigger */}
+                {/* UPDATED [2025-11-23]: Added tooltip with hover text "Click me to find out more about my hobbies" */}
+                <p className="mt-4">
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span
+                          onClick={() => setShowHobbies(!showHobbies)}
+                          className="text-primary underline decoration-dotted cursor-pointer hover:decoration-solid transition-all inline-flex items-center gap-1"
+                        >
+                          Beyond work
+                          <span className="text-xs">{showHobbies ? '▼' : '→'}</span>
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Click me to find out more about my hobbies</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </p>
+
+                {/* TypeWriter Animation */}
+                {showHobbies && personalInfo.hobbiesText && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4"
+                  >
+                    <TextType
+                      text={personalInfo.hobbiesText}
+                      typingSpeed={45}
+                      pauseDuration={1500}
+                      showCursor={true}
+                      loop={false}
+                      className="text-muted-foreground"
+                    />
+                  </motion.div>
+                )}
+              </motion.div>
               <motion.div 
                 className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-6 py-3 text-sm text-primary"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -239,13 +305,13 @@ function App() {
                               {experience.technologies.slice(0, 6).map((tech) => (
                                 <span
                                   key={tech}
-                                  className="px-2 py-1 text-xs bg-accent text-accent-foreground rounded border"
+                                  className="px-2 py-1 text-xs bg-muted text-foreground rounded border border-border"
                                 >
                                   {tech}
                                 </span>
                               ))}
                               {experience.technologies.length > 6 && (
-                                <span className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded">
+                                <span className="px-2 py-1 text-xs bg-muted/50 text-muted-foreground rounded">
                                   +{experience.technologies.length - 6} more
                                 </span>
                               )}
@@ -350,13 +416,13 @@ function App() {
                                 {experience.technologies.slice(0, 4).map((tech) => (
                                   <span
                                     key={tech}
-                                    className="px-1.5 py-0.5 text-xs bg-accent text-accent-foreground rounded"
+                                    className="px-1.5 py-0.5 text-xs bg-muted text-foreground rounded border border-border"
                                   >
                                     {tech}
                                   </span>
                                 ))}
                                 {experience.technologies.length > 4 && (
-                                  <span className="px-1.5 py-0.5 text-xs bg-muted text-muted-foreground rounded">
+                                  <span className="px-1.5 py-0.5 text-xs bg-muted/50 text-muted-foreground rounded">
                                     +{experience.technologies.length - 4}
                                   </span>
                                 )}
